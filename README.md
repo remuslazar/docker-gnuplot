@@ -28,7 +28,7 @@ docker run --rm -v $(pwd):/work remuslazar/gnuplot your_file.gnu
 In this example we will plot the Global Temperature Time Series.
 
 ```
-# fetch monthly data from https://datahub.io/core/global-temp
+# fetch yearly sample data from https://datahub.io/core/global-temp
 curl -L https://datahub.io/core/global-temp/r/annual.csv | grep GISTEMP > global-temp-data.csv
 
 # generate the plot
@@ -36,15 +36,15 @@ docker run --rm -v $(pwd):/work remuslazar/gnuplot -e \
  "set xlabel 'Year'; set ylabel 'Mean';
   set grid;
   set datafile separator ',';
-  set term png size 800,380;
-  set output 'global-temp.png';
+  set term gif size 800,380;
+  set output 'global-temp.gif';
   plot 'global-temp-data.csv' using 2:3 title 'Global Temperature' with lines linewidth 2;"
 ```
 
 This will product a PNG file called `global-temp.png` in the
 `cwd`.
 
-![Global Temperature Example Plot](example/global-temp.png)
+![Global Temperature Example Plot](https://raw.githubusercontent.com/remuslazar/docker-gnuplot/master/example/global-temp.png)
 
 ## Debugging
 
