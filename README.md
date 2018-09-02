@@ -56,3 +56,7 @@ docker run --rm -it --volume $(pwd):/work --entrypoint /bin/sh remuslazar/gnuplo
 ## Author
 
 Remus Lazar (remus at lazar dot info)
+
+## MIT License
+
+See [LICENSE](LICENSE).
