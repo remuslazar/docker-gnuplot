@@ -1,5 +1,5 @@
-# [Docker gnuplot](https://hub.docker.com/r/remuslazar/docker-gnuplot/)
-[![](https://images.microbadger.com/badges/image/remuslazar/docker-gnuplot.svg)](https://microbadger.com/images/remuslazar/docker-gnuplot "Docker Gnuplot") [![](https://images.microbadger.com/badges/version/remuslazar/docker-gnuplot.svg)](https://microbadger.com/images/remuslazar/docker-gnuplot "Docker Gnuplot")
+# [Docker gnuplot](https://hub.docker.com/r/remuslazar/gnuplot/)
+[![](https://images.microbadger.com/badges/image/remuslazar/gnuplot.svg)](https://microbadger.com/images/remuslazar/gnuplot "Docker Gnuplot Image Info") [![](https://images.microbadger.com/badges/version/remuslazar/gnuplot.svg)](https://microbadger.com/images/remuslazar/gnuplot "Docker Gnuplot Version Info")
 
 This is an Alpine Linux based Docker Container to run the latest version of
 [gnuplot](http://www.gnuplot.info).
