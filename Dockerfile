@@ -1,15 +1,12 @@
 FROM alpine:latest
 
-#RUN apk --update add gnuplot \
-#  && mkdir -p /work \
-#  && rm /var/cache/apk/*
+MAINTAINER "Remus Lazar <rl@cron.eu>"
 
 RUN apk --no-cache --virtual .fontsinstaller add msttcorefonts-installer fontconfig \
   && update-ms-fonts \
   && fc-cache -f \
   && apk del .fontsinstaller \
   && rm /var/cache/apk/*
-
 ENV GDFONTPATH=/usr/share/fonts/truetype/msttcorefonts/
 
 # Install gnuplot from source, to make sure we do have GD support etc.
