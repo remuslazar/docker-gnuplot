@@ -24,7 +24,6 @@ RUN apk --update add libgd libpng libjpeg libwebp libjpeg-turbo cairo pango lua 
  && mkdir -p /work \
  && rm /var/cache/apk/*
 
-VOLUME /work
 WORKDIR /work
 
 ENTRYPOINT ["/usr/local/bin/gnuplot"]
