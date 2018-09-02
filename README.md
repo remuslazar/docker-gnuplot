@@ -15,43 +15,43 @@ gdlib should look good and without any warnings.
 
 ## Usage
 
+This image will call the `gnuplot` binary using `/work` as `WORKDIR`.
+Map a local directory to `/work` provide either a `gnuplot` script or use the
+`-e` parameter to supply a "command list" as parameter (see the example section).
+
 ```
-docker run --rm --volume $(pwd):/work remuslazar/gnuplot your_file.gnu
+docker run --rm -v $(pwd):/work remuslazar/gnuplot your_file.gnu
 ```
 
 ## Example
 
-In this example we will create a very basic data file, simulating a temperature
-curve over a period of 24h.
+In this example we will plot the Global Temperature Time Series.
 
 ```
-# generate some sample data
-cat <<EOF > docker-gnuplot-sample-data.csv
-20
-21
-22
-21
-18
-EOF
+# fetch monthly data from https://datahub.io/core/global-temp
+curl -L https://datahub.io/core/global-temp/r/annual.csv | grep GISTEMP > global-temp-data.csv
 
 # generate the plot
-docker run --rm --volume $(pwd):/work remuslazar/gnuplot -e \
- "set xlabel 'Sample'; set ylabel 'Temp';
-  set term png size 640,300;
-  set yrange [0:30];
-  set output 'docker-gnuplot-sample-data.png';
-  plot 'docker-gnuplot-sample-data.csv' using 0:1 with lines;"
+docker run --rm -v $(pwd):/work remuslazar/gnuplot -e \
+ "set xlabel 'Year'; set ylabel 'Mean';
+  set grid;
+  set datafile separator ',';
+  set term png size 800,380;
+  set output 'global-temp.png';
+  plot 'global-temp-data.csv' using 2:3 title 'Global Temperature' with lines linewidth 2;"
 ```
 
-This will product a PNG file called `docker-gnuplot-sample-data.png` in the
+This will product a PNG file called `global-temp.png` in the
 `cwd`.
+
+![Global Temperature Example Plot](example/global-temp.png)
 
 ## Debugging
 
 To run a shell inside the container:
 
 ```
-docker run --rm -it --volume $(pwd):/work --entrypoint /bin/sh remuslazar/gnuplot
+docker run --rm -it -v $(pwd):/work --entrypoint /bin/sh remuslazar/gnuplot
 ```
 
 ## Author
