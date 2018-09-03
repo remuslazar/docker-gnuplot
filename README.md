@@ -36,8 +36,8 @@ docker run --rm -v $(pwd):/work remuslazar/gnuplot -e \
  "set xlabel 'Year'; set ylabel 'Mean';
   set grid;
   set datafile separator ',';
-  set term gif size 800,380;
-  set output 'global-temp.gif';
+  set term png size 800,380;
+  set output 'global-temp.png';
   plot 'global-temp-data.csv' using 2:3 title 'Global Temperature' with lines linewidth 2;"
 ```
 
